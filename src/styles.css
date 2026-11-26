@@ -1199,9 +1199,9 @@ textarea:focus-visible {
 
 .calendar-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(240px, .8fr);
+  grid-template-columns: minmax(320px, 410px) minmax(0, 1fr);
   align-items: start;
-  gap: 17px;
+  gap: 20px;
 }
 
 /* Calendar card */
@@ -1340,6 +1340,7 @@ textarea:focus-visible {
 .selected-day-panel {
   background: #cfc2f0;
   border: 0;
+  padding: 24px 28px;
 }
 
 .selected-day-panel .eyebrow {
@@ -1409,7 +1410,7 @@ textarea:focus-visible {
   display: block;
   font-size: 11px;
   line-height: 1.5;
-  max-width: 210px;
+  max-width: 260px;
   margin: auto;
 }
 
@@ -1957,6 +1958,11 @@ textarea:focus-visible {
 
   .content-columns {
     grid-template-columns: minmax(0, 1.5fr) minmax(205px, .8fr);
+    gap: 16px;
+  }
+
+  .calendar-layout {
+    grid-template-columns: minmax(290px, 340px) minmax(0, 1fr);
     gap: 16px;
   }
 
