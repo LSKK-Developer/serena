@@ -1199,8 +1199,9 @@ textarea:focus-visible {
 
 .calendar-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(240px, .8fr);
-  gap: 17px;
+  grid-template-columns: minmax(320px, 410px) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 20px;
 }
 
 /* Calendar card */
@@ -1256,21 +1257,26 @@ textarea:focus-visible {
 .calendar-weekday {
   text-align: center;
   color: #b580a8;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
-  padding-bottom: 8px;
+  padding-bottom: 10px;
 }
 
 .calendar-day {
   position: relative;
   display: grid;
   place-items: center;
+  justify-self: center;
+  min-width: 0;
   border: 0;
-  height: 48px;
-  border-radius: 11px;
+  width: 100%;
+  max-width: 44px;
+  aspect-ratio: 1;
+  border-radius: 13px;
   background: transparent;
   color: #6b4068;
-  font-size: 10px;
+  font-size: 12px;
+  font-weight: 500;
   gap: 0;
   transition: .16s ease;
 }
@@ -1297,7 +1303,7 @@ textarea:focus-visible {
 
 .calendar-day i {
   position: absolute;
-  bottom: 7px;
+  bottom: 6px;
   width: 4px;
   height: 4px;
   background: #d82f60;
@@ -1315,7 +1321,7 @@ textarea:focus-visible {
   border-top: 1px solid #edcfdf;
   margin-top: 17px;
   padding-top: 13px;
-  font-size: 8px;
+  font-size: 10px;
   color: #ae90b0;
 }
 
@@ -1334,8 +1340,11 @@ textarea:focus-visible {
 
 /* Selected day panel */
 .selected-day-panel {
+  display: flex;
+  flex-direction: column;
   background: #cfc2f0;
   border: 0;
+  padding: 24px 28px;
 }
 
 .selected-day-panel .eyebrow {
@@ -1346,7 +1355,9 @@ textarea:focus-visible {
   color: #3c2860;
   font: 500 22px Fraunces, Georgia, serif;
   line-height: 1.12;
-  margin: 13px 0 20px;
+  margin: 13px 0 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(80, 50, 140, .15);
 }
 
 .selected-entry-list {
@@ -1383,8 +1394,8 @@ textarea:focus-visible {
 
 /* Empty day */
 .day-empty {
-  border-top: 1px solid rgba(80, 50, 140, .16);
-  padding-top: 22px;
+  margin: auto 0;
+  padding: 24px 0;
   text-align: center;
   color: #7558a0;
 }
@@ -1403,9 +1414,9 @@ textarea:focus-visible {
 
 .day-empty span {
   display: block;
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.5;
-  max-width: 180px;
+  max-width: 260px;
   margin: auto;
 }
 
@@ -1956,8 +1967,24 @@ textarea:focus-visible {
     gap: 16px;
   }
 
+  .calendar-layout {
+    grid-template-columns: minmax(290px, 340px) minmax(0, 1fr);
+    gap: 16px;
+  }
+
   .hero-card {
     padding-left: 29px;
+  }
+}
+
+/* Compact desktop: stack the calendar before its detail panel gets cramped. */
+@media (max-width: 900px) {
+  .calendar-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .selected-day-panel {
+    min-height: 180px;
   }
 }
 
@@ -2103,9 +2130,10 @@ textarea:focus-visible {
   .calendar-card,
   .selected-day-panel  { padding: 17px 13px; }
   .calendar-month-head h2 { font-size: 21px; }
-  .calendar-day        { height: 42px; }
+  .calendar-day        { width: 36px; height: 36px; border-radius: 10px; font-size: 11px; }
+  .calendar-day i      { bottom: 4px; }
   .calendar-grid       { gap: 2px; }
-  .calendar-legend     { font-size: 7px; }
+  .calendar-legend     { font-size: 9px; }
 
   /* Settings */
   .settings-bloom      { width: 46px; height: 46px; font-size: 27px; margin-right: 3px; }
